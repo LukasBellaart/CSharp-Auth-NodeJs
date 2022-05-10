@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongoDBUrl', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.mongoDbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection.on('connected', () => {
     console.log("Connected to DB")
@@ -54,8 +54,9 @@ app.post('/signIn', async(req,res) => {
 app.post('/changePassword', async(req,res) => {
     if(!req.query.ray) return res.send('Invalid request!')
     if(!req.body.userName) return res.send('No username provided!')
-    if(!req.body.newPassword) return res.send('No password provided!')
+    if(!req.body.newPassword) return res.send('No passWord provided!')
     if(!req.body.repeatPassword) return res.send('No password provided!')
+
 
     if(req.body.newPassword.length < 7 || req.body.newPassword.length > 100) return res.send('Passwords can be 7 to 100 characters long.') 
 

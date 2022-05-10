@@ -1,7 +1,7 @@
 const Commando = require('discord.js-commando');
 const path = require('path')
 const client = new Commando.Client({
-    owner: 'ownerId',
+    owner: process.env.ownerId,
     commandPrefix: '-',
     unknownCommandResponse: false
 
@@ -20,4 +20,4 @@ client.once('ready', () => {
 })
 
 
-client.login("BotToken")
+client.login(process.env.botToken)
