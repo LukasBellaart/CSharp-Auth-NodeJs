@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
     passWord: String,
     discordId: String,
     serialKey: String,
-    hwid: String,
 })
 
 module.exports = mongoose.model("Users", userSchema)

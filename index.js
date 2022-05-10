@@ -32,7 +32,6 @@ app.post('/signIn', async(req,res) => {
     if(!req.query.ray) return res.send('Invalid request!')
     if(!req.body.userName) return res.send('No username provided!')
     if(!req.body.passWord) return res.send('No password provided!')
-    if(!req.body.hwid) return res.send('No hardware id provided!')
 
     let userFile = await userSchema.findOne({userName:req.body.userName})
     
@@ -43,17 +42,6 @@ app.post('/signIn', async(req,res) => {
     var hashedPassword = sha256.digest("base64");
 
     if(userFile.passWord != hashedPassword) return res.send('That password is incorrect!')
-
-    var sha256 = crypto.createHash("sha256");
-    sha256.update(req.body.hwid + process.env.hashKey, "utf8");
-    var hashedHwid = sha256.digest("base64");
-
-    if(userFile.hwid == "null"){
-        userFile.hwid = hashedHwid
-        await userFile.save()
-    } else {
-        if(userFile.hwid != hashedHwid) return res.send("Your HWID does not match the locked one!")
-    }
 
     var sha256 = crypto.createHash("sha256");
     sha256.update(req.body.passWord + req.query.ray + process.env.hashKey, "utf8");
@@ -68,7 +56,6 @@ app.post('/changePassword', async(req,res) => {
     if(!req.body.userName) return res.send('No username provided!')
     if(!req.body.newPassword) return res.send('No password provided!')
     if(!req.body.repeatPassword) return res.send('No password provided!')
-    if(!req.body.hwid) return res.send('No hardware id provided!')
 
     if(req.body.newPassword.length < 7 || req.body.newPassword.length > 100) return res.send('Passwords can be 7 to 100 characters long.') 
 
@@ -79,16 +66,6 @@ app.post('/changePassword', async(req,res) => {
     
     if(!userFile) return res.send('That account does not exist!')
 
-    var sha256 = crypto.createHash("sha256");
-    sha256.update(req.body.hwid + process.env.hashKey, "utf8");
-    var hashedHwid = sha256.digest("base64");
-
-    if(userFile.hwid == "null"){
-        userFile.hwid = hashedHwid
-        await userFile.save()
-    } else {
-        if(userFile.hwid != hashedHwid) return res.send("Your HWID does not match the locked one!")
-    }
 
     let hasToken = await tokenScheme.findOne({availableFor:req.body.userName})
     if(!hasToken) return res.send('You do not have the permission to change your password!')
@@ -117,7 +94,6 @@ app.post("/createAccount", async(req,res) => {
     if(!req.body.passWord) return res.send('No password provided!')
     if(!req.body.discordId) return res.send('No discord id provided!')
     if(!req.body.serialKey) return res.send('No serial key provided!')
-    if(!req.body.hwid) return res.send('No hardware id provided!')
 
     if(req.body.userName.length < 3 || req.body.userName.length > 20) return res.send('Usernames can be 3 to 20 characters long.')
     if(req.body.passWord.length < 7 || req.body.passWord.length > 100) return res.send('Passwords can be 7 to 100 characters long.') 
@@ -144,16 +120,11 @@ app.post("/createAccount", async(req,res) => {
     sha256.update(req.body.passWord + process.env.hashKey, "utf8");
     var hashedPassword = sha256.digest("base64");
 
-    var sha256 = crypto.createHash("sha256");
-    sha256.update(req.body.hwid + process.env.hashKey, "utf8");
-    var hashedHwid = sha256.digest("base64");
-
     let finalDataBaseProduct = new userSchema({
         userName: req.body.userName,
         passWord: hashedPassword,
         discordId: req.body.discordId,
-        serialKey: req.body.serialKey,
-        hwid: hashedHwid
+        serialKey: req.body.serialKey
     })
 
     await finalDataBaseProduct.save().catch((err) => {
