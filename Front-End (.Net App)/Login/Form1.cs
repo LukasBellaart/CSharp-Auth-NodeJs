@@ -12,7 +12,7 @@ namespace Login
     public partial class Form1 : Form
     {
         readonly HttpClient client = new HttpClient();
-
+        public readonly string url = "http://127.0.0.1:4200";
 
         public Form1()
         {
@@ -31,7 +31,7 @@ namespace Login
             var ray = Functions.RandomString(20);
             var expectedData = Functions.Hash(LoginPassword.Text + ray + "secretCode");
 
-            var response = await client.PostAsync("http://127.0.0.1:4200/signin?ray=" + ray, data);
+            var response = await client.PostAsync(url + "/signin?ray=" + ray, data);
             var responseString = await response.Content.ReadAsStringAsync();
 
             if (expectedData == responseString)
@@ -63,7 +63,7 @@ namespace Login
             var ray = Functions.RandomString(20);
             var expectedData = Functions.Hash(RegisterPassword.Text + ray + "secretCode");
 
-            var response = await client.PostAsync("http://127.0.0.1:4200/createAccount?ray=" + ray, data);
+            var response = await client.PostAsync(url + "/createAccount?ray=" + ray, data);
             var responseString = await response.Content.ReadAsStringAsync();
 
 
@@ -95,7 +95,7 @@ namespace Login
             var ray = Functions.RandomString(20);
             var expectedData = Functions.Hash(ResetRepeatPassword.Text + ray + "secretCode");
 
-            var response = await client.PostAsync("http://127.0.0.1:4200/changePassword?ray=" + ray, data);
+            var response = await client.PostAsync(url+"/changePassword?ray=" + ray, data);
             var responseString = await response.Content.ReadAsStringAsync();
 
 

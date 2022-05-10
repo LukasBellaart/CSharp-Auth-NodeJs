@@ -9,3 +9,14 @@ C:\Users\Lukas\source\repos\Login\Login\obj\Debug\Login.csproj.GenerateResource.
 C:\Users\Lukas\source\repos\Login\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
 C:\Users\Lukas\source\repos\Login\Login\obj\Debug\Login.exe
 C:\Users\Lukas\source\repos\Login\Login\obj\Debug\Login.pdb
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\obj\Debug\Login.csproj.AssemblyReference.cache
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\obj\Debug\Login.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\obj\Debug\Login.Form1.resources
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\obj\Debug\Login.Properties.Resources.resources
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\obj\Debug\Login.csproj.GenerateResource.cache
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\obj\Debug\Login.exe
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\obj\Debug\Login.pdb
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\bin\Debug\Login.exe.config
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\bin\Debug\Login.exe
+C:\Users\Lukas\Desktop\Werk\Auth\CSharp-Auth-NodeJs\Front-End (.Net App)\Login\bin\Debug\Login.pdb
