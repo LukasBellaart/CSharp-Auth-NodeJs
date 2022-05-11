@@ -14,19 +14,19 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// mongoose.connect(process.env.mongoDbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.mongoDbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// mongoose.connection.on('connected', () => {
-//     console.log("Connected to DB")
-// });
+mongoose.connection.on('connected', () => {
+    console.log("Connected to DB")
+});
 
-// mongoose.connection.on('err', err => {
-//     console.log(`Mongoose connection error : \\n ${err.stack}`)
-// });
+mongoose.connection.on('err', err => {
+    console.log(`Mongoose connection error : \\n ${err.stack}`)
+});
 
-// mongoose.connection.on('disconnected', err => {
-//     console.log(`Connection to the database lost`)
-// });
+mongoose.connection.on('disconnected', err => {
+    console.log(`Connection to the database lost`)
+});
 
 app.post('/signIn', async(req,res) => {
     if(!req.query.ray) return res.send('Invalid request!')
@@ -141,4 +141,4 @@ app.post("/createAccount", async(req,res) => {
 
 app.listen(4200)
 
-// require('./bot')
+require('./bot')
